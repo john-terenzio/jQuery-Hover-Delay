@@ -1,0 +1,21 @@
+jQuery Hover Delay
+
+About
+=====
+
+This plugin "extends" the jQuery hover method in a simple yet powerful way. Normally the hover method takes only two arguments, the inHandler and outHandler, which are executed when the user mouses in and out of an element respectively (for a more detailed explaination of jQuery hover visit the jQuery docs). This plugin enables a third argument, delay, to be passed to the native jQuery method. If the delay argument (which should be an integer and represents milliseconds) is detected, the hover in and out handlers will wait for that amount of time before they are triggered. This produces a more natural feel in certain situations and avoids triggering hovers accidentally during unrelated mouse movements that happen to pass over a hover-enabled element. Basically the mouse must be over the element for X milliseconds before the inHandler is called, and outside of the element for X milliseconds before the outHandler is called.
+
+There is a similar and longstanding plugin that also solves this problem called hoverIntent. Not only does it have delay, but also some more advanced options. This plugin, however, aims to be smaller, lighter, faster, and easier to work with, since it does not introduce a new method to jQuery and does not have a lot of options to configure.
+
+Usage
+=====
+
+before - $.hover(inHandler, outHandler);
+after  - $.hover(inHandler, outHandler, delay);
+
+Resources
+========
+
+DEMO: http://terenz.io/hover/
+jQuery docs on the hover method: http://api.jquery.com/hover/
+hoverIntent Plugin: http://cherne.net/brian/resources/jquery.hoverIntent.html

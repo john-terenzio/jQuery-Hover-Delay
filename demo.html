@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>jQuery Hover Delay Demo</title>
+    <style type="text/css">
+      #normal, #delay {
+        width: 100px;
+        height: 100px;
+        background-color: #00f;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Normal jQuery hover method</h1>
+    <div id="normal"></div>
+    <pre>
+$('#normal').hover(function(e){
+  $(this).animate({'height': '200px'});
+}, function(){
+  $(this).animate({'height': '100px'});
+});
+    </pre>
+    <h1>jQuery hover method with delay</h1>
+    <div id="delay"></div>
+    <pre>
+$('#delay').hover(function(e){
+  $(this).animate({'height': '200px'});
+}, function(){
+  $(this).animate({'height': '100px'});
+}, 250);
+    </pre>
+  </body>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+  <script type="text/javascript" src="jquery.hoverdelay.js"></script>
+  <script type="text/javascript">
+
+  $('#normal').hover(function(e){
+    $(this).animate({'height': '200px'});
+  }, function(){
+    $(this).animate({'height': '100px'});
+  });
+
+  $('#delay').hover(function(e){
+    $(this).animate({'height': '200px'});
+  }, function(){
+    $(this).animate({'height': '100px'});
+  }, 250);
+
+  </script>
+</html>
