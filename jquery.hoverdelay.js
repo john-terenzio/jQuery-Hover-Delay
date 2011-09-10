@@ -21,7 +21,8 @@
 				} else {
 					var elem = this;
 					timeout = setTimeout(function(){
-						timeout = handlerIn.call(elem, e); // shortcut to set timeout to undefined, pass original event object to handler
+						timeout = undefined;
+						handlerIn.call(elem, e); // pass original event object to handler
 					}, delay);
 				}
 			}, function(e){
@@ -30,7 +31,8 @@
 				} else  {
 					var elem = this;
 					timeout = setTimeout(function(){
-						timeout = handlerOut.call(elem, e); // shortcut to set timeout to undefined, pass original event object to handler
+						timeout = undefined;
+						handlerOut.call(elem, e); // pass original event object to handler
 					}, delay);
 				}
 			});
