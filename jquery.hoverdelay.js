@@ -1,4 +1,4 @@
-// jQuery Hover Delay 1.0.0 (20110908)
+// jQuery Hover Delay 1.0.1 (20110910)
 // By John Terenzio | http://terenz.io/ | MIT License
 (function($){
 
@@ -19,20 +19,20 @@
 				if (timeout) {
 					timeout = clearTimeout(timeout);
 				} else {
-					var elem = this;
+					var element = this;
 					timeout = setTimeout(function(){
 						timeout = undefined;
-						handlerIn.call(elem, e); // pass original event object to handler
+						handlerIn.call(element, e); // pass original event object to handler
 					}, delay);
 				}
 			}, function(e){
 				if (timeout) {
 					timeout = clearTimeout(timeout);
 				} else  {
-					var elem = this;
+					var element = this;
 					timeout = setTimeout(function(){
 						timeout = undefined;
-						handlerOut.call(elem, e); // pass original event object to handler
+						handlerOut.call(element, e); // pass original event object to handler
 					}, delay);
 				}
 			});
