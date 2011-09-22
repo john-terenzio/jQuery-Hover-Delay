@@ -15,7 +15,7 @@
 			var timeout;
 
 			// bind to original hover, but use delay
-			$(this).hover(function(e){
+			oldHover.call($(this), function(e){
 				if (timeout) {
 					timeout = clearTimeout(timeout);
 				} else {
