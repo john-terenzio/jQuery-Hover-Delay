@@ -1,4 +1,4 @@
-// jQuery Hover Delay 1.0.1 (20110910)
+// jQuery Hover Delay 1.0.2 (20110922)
 // By John Terenzio | http://terenz.io/ | MIT License
 (function($){
 
