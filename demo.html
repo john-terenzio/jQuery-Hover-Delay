@@ -10,41 +10,40 @@
     </style>
   </head>
   <body>
-    <h4>Hint: Move pointer in and out of boxes rapidly.</h4>
-    <h1>Normal jQuery hover method</h1>
-    <div id="normal"></div>
+    <h2>Normal jQuery .hover method</h2>
+    <h4>Hint: Move pointer in and out of box rapidly.</h4>
     <pre>
-$('#normal').hover(function(e){
+$('#normal').hover(function(e) {
   $(this).animate({'height': '200px'});
-}, function(){
+}, function() {
   $(this).animate({'height': '100px'});
 });
     </pre>
-    <h1>jQuery hover method with delay</h1>
-    <div id="delay"></div>
+    <div id="normal"></div>
+    <h2>Enhanced .hover method with delay</h2>
     <pre>
-$('#delay').hover(function(e){
+$('#delay').hover(function(e) {
   $(this).animate({'height': '200px'});
-}, function(){
+}, function() {
   $(this).animate({'height': '100px'});
 }, 250);
     </pre>
+    <div id="delay"></div>
+    <br /><br />
+    <a href="https://github.com/jterenzio/jQuery-Hover-Delay">Github project page</a>
   </body>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="jquery.hoverdelay.js"></script>
   <script type="text/javascript">
-
-  $('#normal').hover(function(e){
-    $(this).animate({'height': '200px'});
-  }, function(){
-    $(this).animate({'height': '100px'});
-  });
-
-  $('#delay').hover(function(e){
-    $(this).animate({'height': '200px'});
-  }, function(){
-    $(this).animate({'height': '100px'});
-  }, 250);
-
+    $('#normal').hover(function(e) {
+      $(this).animate({'height': '200px'});
+    }, function() {
+      $(this).animate({'height': '100px'});
+    });
+    $('#delay').hover(function(e) {
+      $(this).animate({'height': '200px'});
+    }, function() {
+      $(this).animate({'height': '100px'});
+    }, 250);
   </script>
 </html>
