@@ -1,53 +1,51 @@
-// jQuery Hover Delay 1.0.3 (20121219)
+// jQuery Hover Delay 1.1.0 (20130401)
 // By John Terenzio | http://terenz.io/ | MIT License
-(function($){
+(function($) {
 
-	var
+  'use strict';
 
-	// original jQuery hover method
-	oldHover = $.fn.hover,
+  // original hover method
+  var oldHover = $.fn.hover,
 
-	// new hover method with delay
-	newHover = function(handlerIn, handlerOut, delay){
-		return $(this).each(function(){
+  // enhanced hover method
+  newHover = function(handlerIn, handlerOut, delay) {
 
-			// the timeout
-			var timeout;
+    return this.each(function() {
 
-			// bind to original hover, but use delay
-			oldHover.call($(this), function(e){
-				if (timeout) {
-					timeout = clearTimeout(timeout);
-				} else {
-					var element = this;
-					timeout = setTimeout(function(){
-						timeout = undefined;
-						handlerIn.call(element, e); // pass original event object to handler
-					}, delay);
-				}
-			}, function(e){
-				if (timeout) {
-					timeout = clearTimeout(timeout);
-				} else  {
-					var element = this;
-					timeout = setTimeout(function(){
-						timeout = undefined;
-						handlerOut.call(element, e); // pass original event object to handler
-					}, delay);
-				}
-			});
+      var timeout,
 
-		});
-	};
+      handler = function(el, fn, e) {
+        if (timeout) {
+          timeout = window.clearTimeout(timeout); // also set timeout to undefined
+        } else {
+          timeout = window.setTimeout(function() {
+            timeout = undefined;
+            fn.call(el, e);
+          }, delay);
+        }
+      };
 
-	// hack original jQuery hover method to use old or new depending on whether or not a delay is passed
-	$.fn.hover = function(handlerIn, handlerOut, delay){
-		if (typeof delay === 'number') {
-			newHover.call(this, handlerIn, handlerOut, delay);
-		} else {
-			oldHover.call(this, handlerIn, handlerOut);
-		}
-		return this;
-	};
+      $(this).on('mouseenter mouseleave', function(e) {
+        handler(this, e.type === 'mouseenter' ? handlerIn : handlerOut, e);
+      });
 
-})(jQuery);
+    });
+
+  };
+
+  // call either original hover method or new hover method depending on
+  // whether a delay argurment was passed, can take one or two handlers
+  $.fn.hover = function(/* arguments */) {
+
+    var args = Array.prototype.slice.call(arguments);
+
+    if (args.length === 3 && typeof args[2] === 'number') {
+      return newHover.apply(this, args);
+    } else if (args.length === 2 && typeof args[1] === 'number') {
+      return newHover.call(this, args[0], args[0], args[1]);
+    }
+    return oldHover.apply(this, args);
+
+  };
+
+})(window.jQuery);
